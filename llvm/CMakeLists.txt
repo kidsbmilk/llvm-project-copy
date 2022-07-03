@@ -186,6 +186,7 @@ if(LLVM_ENABLE_GISEL_COV)
 endif()
 
 # Add path for custom modules
+# CMAKE_CURRENT_SOURCE_DIR 是当前 CMakeLists.txt 所在路径
 set(CMAKE_MODULE_PATH
   ${CMAKE_MODULE_PATH}
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake"

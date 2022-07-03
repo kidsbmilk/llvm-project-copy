@@ -1,4 +1,6 @@
 include(AddLLVM)
+# 这里之所以引入 LLVMExternalProjectUtils，是因为下面使用了 llvm_ExternalProject_BuildCmd 方法，
+# llvm_ExternalProject_BuildCmd 方法在 llvm-project/llvm/cmake/modules/LLVMExternalProjectUtils.cmake 中定义
 include(LLVMExternalProjectUtils)
 
 
@@ -103,7 +105,7 @@ function(build_native_tool target output_path_var)
   else()
     set(output_path "${${PROJECT_NAME}_NATIVE_BUILD}/bin/${target}")
   endif()
-
+  # llvm_ExternalProject_BuildCmd 方法在 llvm-project/llvm/cmake/modules/LLVMExternalProjectUtils.cmake 中定义
   llvm_ExternalProject_BuildCmd(build_cmd ${target} ${${PROJECT_NAME}_NATIVE_BUILD}
                                 CONFIGURATION Release)
   add_custom_command(OUTPUT "${output_path}"
