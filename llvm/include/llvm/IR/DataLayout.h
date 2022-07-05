@@ -13,7 +13,11 @@
 // This structure should be created once, filled in if the defaults are not
 // correct and then passed around by const&.  None of the members functions
 // require modification to the object.
-//
+
+
+// 此文件定义与数据类型大小/偏移/对齐信息相关的布局属性。它使用惰性注释来缓存有关结构类型如何布局和使用的信息。
+
+// 这个结构应该被创建一次，如果默认值不正确则填充，然后由 const& 传递。所有成员函数都不需要修改对象。
 //===----------------------------------------------------------------------===//
 
 #ifndef LLVM_IR_DATALAYOUT_H
@@ -109,6 +113,9 @@ struct PointerAlignElem {
 /// The target data layout string is specified *by the target* - a frontend
 /// generating LLVM IR is required to generate the right target data for the
 /// target being codegen'd to.
+
+/// 目标数据布局字符串的解析版本和查询方法。
+/// 目标数据布局字符串*由目标指定* - 需要生成 LLVM IR 的前端来为要生成代码的目标生成正确的目标数据。
 class DataLayout {
 public:
   enum class FunctionPtrAlignType {
@@ -246,6 +253,9 @@ public:
   /// This representation is in the same format accepted by the string
   /// constructor above. This should not be used to compare two DataLayout as
   /// different string can represent the same layout.
+
+  // 返回 DataLayout 的字符串表示形式。
+  // 这种表示形式与上面的字符串构造函数接受的格式相同。这不应该用于比较两个 DataLayout，因为不同的字符串可以表示相同的布局。
   const std::string &getStringRepresentation() const {
     return StringRepresentation;
   }

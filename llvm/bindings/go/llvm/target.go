@@ -262,6 +262,7 @@ func (tm TargetMachine) CreateTargetData() TargetData {
 }
 
 // Triple returns the triple describing the machine (arch-vendor-os).
+// Triple 返回描述机器的三元组 (arch-vendor-os)。
 func (tm TargetMachine) Triple() string {
 	cstr := C.LLVMGetTargetMachineTriple(tm.C)
 	return C.GoString(cstr)

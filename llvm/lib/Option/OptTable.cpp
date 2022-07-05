@@ -465,6 +465,7 @@ InputArgList OptTable::ParseArgs(ArrayRef<const char *> ArgArr,
       continue;
     }
     // Ignore empty arguments (other things may still take them as arguments).
+    // StringRef 重写了赋值运算符，Args.getArgString(Index) 返回指针，直接转为 StringRef 类型。前面已经判断为不为 nullptr。
     StringRef Str = Args.getArgString(Index);
     if (Str == "") {
       ++Index;

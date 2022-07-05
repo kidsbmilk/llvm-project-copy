@@ -59,6 +59,9 @@ namespace llvm {
   /// support, to make them available via the TargetRegistry.
   ///
   /// It is legal for a client to make multiple calls to this function.
+
+  // InitializeAllTargets - 如果主程序想要访问 LLVM 配置支持的所有可用目标机器，则应调用此函数，以通过 TargetRegistry 使它们可用。
+  // 客户端多次调用此函数是合法的。
   inline void InitializeAllTargets() {
     // FIXME: Remove this, clients should do it.
     InitializeAllTargetInfos();
